@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- HTML Codes by Quackit.com -->
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
+      @page {
+        size: A4;
+        font-family: "Mukta";
+      }
+      body {
+        background-color: #ffffff;
+        margin: 0;
+        font-family: "Mukta";
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      h1 {
+        margin: 0;
+        text-align: center;
+        color: #fff;
+        font-size: 50px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+      .date {
+        display: flex;
+        width: 100px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: center;
+      }
+      .date span {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .logo {
+        height: 100px;
+        width: 180px;
+        object-fit: cover;
+        margin: 0;
+      }
+      .box {
+        background-color: #6bc4ed;
+        padding: 5px 35px;
+        font-weight: 200;
+        font-style: normal;
+      }
+      .messege {
+        width: 100%;
+        padding-top: 5px;
+      }
+      p {
+        font-family: "Mukta", sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        color: #000000;
+      }
+      .dates {
+        display: flex;
+        flex-direction: column;
+        font-size: 25px;
+      }
+      .shipingbody {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        margin: 80px 100px 30px 100px;
+        font-size: 30px;
+      }
+      .shipbox {
+        display: flex;
+        width: 70%;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        background-color: #6bc4ed;
+      }
+      .shipStatus {
+        height: 120px;
+        margin: 20px 50px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 0.75);
+        padding: 30px 0 0 40px;
+        font-size: 25x;
+      }
+      .shipStatusBody {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .boat {
+        height: 70px;
+        width: 70px;
+        border-radius: 100%;
+        background-color: #018aca;
+      }
+      .map {
+        margin: 10px 80px 40px 80px;
+      }
+      #mapid {
+        border-radius: 15px;
+        box-shadow: 0px 0px 6px -3px rgba(0, 0, 0, 0.75);
+      }
+      .boatText {
+        font-size: 25px;
+        font-weight: 500;
+      }
+      .conditions {
+        display: flex;
+        flex-direction: column;
+      }
+      .foot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        color: #004aad;
+        background-color: #def3ff;
+        font-weight: 600;
+        font-style: normal;
+      }
+      .table-container {
+        flex-grow: 1;
+      }
+      .watermark {
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        z-index: 10;
+        font-size: 3em;
+        color: rgba(0, 0, 0, 0.2);
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="box" style="max-width: 100%; height: auto">
+      <header class="header">
+        <img
+          class="logo"
+          src="https://orica.ingeniososweb.com/img/Orica_Logo.png"
+          style="max-width: 100%; height: auto"
+        />
+      </header>
+      <h1>Shipment</h1>
+    </section>
+    <section class="shipingbody">
+      <div>
+        <span>Bill of landing numbre</span>
+        <div class="shipbox">
+          <span>13414131</span>
+        </div>
+      </div>
+      <div class="dates">
+        <span>From: BRISBANE, AUS</span>
+        <span>To: BUENAVENTURA, COL</span>
+      </div>
+      <div>
+        <span>Source</span>
+        <div class="shipbox">
+          <span>AUSTRALIA</span>
+        </div>
+      </div>
+      <div>
+        <span>Status</span>
+        <div class="shipbox">
+          <span>EN TRANSITO</span>
+        </div>
+      </div>
+    </section>
+    <section class="shipStatus">
+      <div class="shipStatusBody">
+        <div class="boat"></div>
+        <span class="boatText">ship</span>
+      </div>
+    </section>
+    <section class="map">
+      <div id="mapid" style="width: 100%; height: 320px"></div>
+    </section>
+    <footer class="foot" style="max-width: 100%; height: auto">
+      <span>https://www.orica.com (55)1234-5678</span>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      var map = L.map("mapid").setView([18.42241, 14.420486], 1);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      var markerIcon = L.icon({
+        iconUrl: "https://orica.ingeniososweb.com/img/marker-icon.png",
+        iconRetinaUrl: "https://orica.ingeniososweb.com/img/marker-icon-2x.png",
+        iconSize: [25, 41],
+        iconAnchor: [12.5, 41],
+        popupAnchor: [0, -41],
+      });
+
+      L.marker([3.88491, -77.067234], { icon: markerIcon }).addTo(map);
+      L.marker([-27.465864, 153.163418], { icon: markerIcon }).addTo(map);
+    </script>
+  </body>
+</html>

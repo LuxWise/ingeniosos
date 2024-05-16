@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@layer components {
+  .Navbar{
+    @apply fixed flex items-center justify-between
+    z-20 top-0 w-full h-20 px-5  lg:px-16 bg-[#fefeff] shadow-base
+  }
+  .Sidebar{
+    @apply hidden fixed mt-20 h-full lg:flex w-80 z-10 justify-center bg-[#fefeff] 
+    shadow-base 
+  }
+  .User{
+    @apply flex h-full  w-full z-30 justify-end bg-[#024f7a82] 
+    shadow-base max-md:hidden
+  }
+  .Logo{
+    @apply flex w-36 h-20 mx-5 object-cover cursor-pointer
+  }
+  .Quote{
+    @apply flex w-56 h-80 object-cover cursor-pointer shadow-base
+  }
+  .key{
+    @apply flex w-8 h-8 mx-5 object-cover
+  }
+  .user{
+    @apply flex w-10 h-10 mx-5 object-cover 
+    rounded-full shadow-sm
+  }
+  .sidebarModule{
+    @apply relative flex items-center justify-start gap-4
+    h-10 text-[#024f72] hover:text-[#0087c5] cursor-pointer
+  }
+  .inputModuleReview{
+    @apply w-80 lg:w-24 pl-4 h-9 bg-white rounded-md outline-none p-2 border-b-2 border-gray-400
+  }
+  .inputMiduleDivide{
+    @apply w-80 lg:w-24 pl-10 h-12 bg-white rounded-md outline-none text-xl border-2
+  }
+}
+@tailwind utilities;

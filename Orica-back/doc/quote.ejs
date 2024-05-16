@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- HTML Codes by Quackit.com -->
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
+      @page {
+        size: A4;
+        font-family: "Mukta";
+      }
+
+      body {
+        background-color: #ffffff;
+        margin: 0;
+        font-family: "Mukta";
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      h1 {
+        margin: 0;
+        text-align: center;
+        color: #fff;
+        font-size: 50px;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+      .date {
+        display: flex;
+        width: 100px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 15px;
+        justify-content: center;
+        align-items: center;
+      }
+      .date span {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .logo {
+        height: 100px;
+        width: 180px;
+        object-fit: cover;
+        margin: 0;
+      }
+      .box {
+        background-color: #6bc4ed;
+        padding: 5px 35px;
+        font-weight: 200;
+        font-style: normal;
+      }
+      .messege {
+        width: 100%;
+        padding-top: 5px;
+      }
+      p {
+        font-family: "Mukta", sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        color: #000000;
+      }
+      .space {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .generalInfo {
+        display: flex;
+        margin-top: 20px;
+        padding: 25px 50px;
+        gap: 40%;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+      }
+      .info span {
+        color: #074eaf;
+        font-size: 15px;
+        font-weight: 400;
+      }
+      .infoOrica {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .infoOrica span {
+        font-size: 15px;
+      }
+      .comments {
+        padding: 10px 50px;
+      }
+      .comments span {
+        color: #074eaf;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      .tableHeader {
+        margin: 5px 40px;
+        padding: 15px;
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 0.5fr;
+        background-color: #def3ff;
+      }
+      .tableHeader span {
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .table {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-auto-rows: minmax(20px, auto);
+        margin: 20px 40px;
+        border-top: 1px solid #1c5eb6;
+      }
+      .table > div {
+        padding: 5px;
+        border-right: 0.5px solid #1c5eb6;
+        border-left: 0.5px solid #1c5eb6;
+        border-bottom: 0.5px solid #1c5eb6;
+        font-size: 8px;
+        font-weight: 400;
+      }
+      .table .colorTable {
+        display: flex;
+        padding-left: 10px;
+        align-items: center;
+        background-color: #def3ff;
+      }
+      .table .whiteTable {
+        display: flex;
+        padding-left: 10px;
+        align-items: center;
+      }
+      .total {
+        display: flex;
+        padding: 40px;
+        font-size: 10px;
+        justify-content: space-between;
+      }
+      .totalConditions {
+        color: #004aad;
+        padding: 15px;
+        border: 1px dashed #1c5eb6;
+      }
+      .totalPayment {
+        display: flex;
+        flex-direction: column;
+        color: #004aad;
+        background-color: #def3ff;
+        font-size: 16px;
+        padding: 10px 15px;
+      }
+      .totalQuote {
+        background-color: #fff;
+        padding: 5px;
+      }
+      .conditions {
+        display: flex;
+        flex-direction: column;
+      }
+      .foot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        color: #004aad;
+        background-color: #def3ff;
+        font-weight: 600;
+        font-style: normal;
+      }
+      .table-container {
+        flex-grow: 1;
+      }
+      .watermark {
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        z-index: 10;
+        font-size: 3em;
+        color: rgba(0, 0, 0, 0.2);
+        opacity: 0.5;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="watermark">
+      This document is not valid for customs procedures
+    </div>
+    <section class="box" style="max-width: 100%; height: auto">
+      <header class="header">
+        <img
+          class="logo"
+          src="https://orica.ingeniososweb.com/img/Orica_Logo.png"
+          style="max-width: 100%; height: auto"
+        />
+
+        <div class="space">
+          <div class="date">
+            <span style="white-space: nowrap"># <%= dataQuote[0].id %> </span>
+          </div>
+          <div class="date">
+            <span style="white-space: nowrap"><%= dataQuote[0].date %></span>
+          </div>
+        </div>
+      </header>
+      <h1>Quote</h1>
+    </section>
+    <section class="generalInfo" style="max-width: 100%; height: auto">
+      <div class="info">
+        <span style="white-space: nowrap"
+          >Customer: <%= dataQuote[0].name %></span
+        >
+        <span style="white-space: nowrap">Port: <%= dataQuote[0].port %></span>
+        <span style="white-space: nowrap"
+          >Phone: <%= dataQuote[0].phone %></span
+        >
+        <span style="white-space: nowrap"
+          >Email: <%= dataQuote[0].email %></span
+        >
+      </div>
+      <div class="infoOrica">
+        <span>
+          ORICA CARIBE, S.A. International Business Park, Edificio 3825, Oficina
+          109, Howard, Ciudad de Panama +57 316 32912141 +57165851100
+        </span>
+      </div>
+    </section>
+    <section class="comments" style="max-width: 100%; height: auto">
+      <span>Comments:</span>
+      <p></p>
+      <span style="white-space: nowrap; color: #000000">
+        <%= dataQuote[0].observations %>
+      </span>
+    </section>
+    <section class="tableHeader" style="max-width: 100%; height: auto">
+      <span>Product</span>
+      <span>Quantity</span>
+      <span>Total</span>
+    </section>
+    <section class="table-container">
+      <section class="table" style="max-width: 100%; height: auto">
+        <% for (let i = 0; i < data.length; i++) { %>
+        <div class="colorTable" style="font-size: 15px; line-height: 20px">
+          <%= data[i].product %>
+        </div>
+        <div class="whiteTable" style="font-size: 15px; line-height: 20px">
+          <%= data[i].quantity %>
+        </div>
+        <div class="whiteTable" style="font-size: 15px; line-height: 20px">
+          <%= data[i].total %>
+        </div>
+        <% } %>
+      </section>
+    </section>
+
+    <section class="total" style="max-width: 100%; height: auto">
+      <div class="totalConditions">
+        <span style="font-weight: 600">TERMS OF PAYMENT</span>
+        <p></p>
+        <div class="conditions">
+          <span>PAYMENT IN FULL WITHIN 45 DAYS </span>
+          <span>AFTER INVOICE INVOICE</span>
+        </div>
+      </div>
+      <div class="totalPayment">
+        <div style="display: flex; align-items: center; gap: 7px">
+          <span style="white-space: nowrap; font-size: 13px">SUBTOTAL : </span>
+          <span style="white-space: nowrap; font-size: 13px">
+            $<%= dataQuote[0].subtotal%></span
+          >
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px">
+          <span style="white-space: nowrap; font-size: 13px">TAXES : </span>
+          <span style="white-space: nowrap; font-size: 13px">
+            $<%= dataQuote[0].taxes%></span
+          >
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px">
+          <span style="white-space: nowrap">TOTAL : </span>
+          <div class="totalQuote">
+            <span style="white-space: nowrap"> $<%= dataQuote[0].total%></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="foot" style="max-width: 100%; height: auto">
+      <span>https://www.orica.com (55)1234-5678</span>
+    </footer>
+  </body>
+</html>
